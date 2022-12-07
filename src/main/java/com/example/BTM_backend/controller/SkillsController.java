@@ -10,27 +10,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.BTM_backend.model.Talents;
-
-import com.example.BTM_backend.repository.TalentsRepository;
+import com.example.BTM_backend.model.Skills;
+import com.example.BTM_backend.repository.SkillsRepository;
 
 @RestController
 //@RequestMapping("/")
-public class TalentsController {
+public class SkillsController {
 
 	@Autowired
-	TalentsRepository talentsRepository;
+	SkillsRepository skillsRepository;
 
-	// Get All Talent Records
-	@GetMapping("/talents")
-	public List<Talents> getTalents() {
-		return talentsRepository.findAll();
+	// Get All Experts Records
+	@GetMapping("/skills")
+	public List<Skills> getExperts() {
+		return skillsRepository.findAll();
 	}
 
 	// Create a new talent record
-	@PostMapping("/talents")
-	public Talents createTalent(@Valid @RequestBody Talents talents) {
-		return talentsRepository.save(talents);
+	@PostMapping("/skills")
+	public Skills createExpert(@Valid @RequestBody Skills skills) {
+		return skillsRepository.save(skills);
 	}
 
 }

@@ -7,10 +7,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "talent")
+@Table(name = "talents")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
 
@@ -19,42 +19,43 @@ public class Talents implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
+	@NotNull
     private Long talentId;
 
-    @NotBlank
+    @NotNull
     private String firstName;
 
-    @NotBlank
+    @NotNull
     private String surname;
 
-    @NotBlank
+    @NotNull
     private String password;
 
-    @NotBlank
-    private int academicYear;
+	@NotNull
+    private Long academicYear;
 
-    @NotBlank
+    @NotNull
     private String programme;
 
-    @NotBlank
+    @NotNull
     private String studentLevel;
 
-    @NotBlank
+    @NotNull
     private String studentStatus;
 
-    @NotBlank
+	@NotNull
     private boolean jobShop;
     
-    @NotBlank
-    private int recommendation;
+	@NotNull
+    private Long recommendation;
 
     public Talents()
     {
 
     }
-    public Talents(@NotBlank Long talentId, @NotBlank String firstName, @NotBlank String surname, @NotBlank String password,
-			@NotBlank int academicYear, @NotBlank String programme, @NotBlank String studentLevel, @NotBlank String studentStatus,
-            @NotBlank boolean jobShop, @NotBlank int recommendation) {
+    public Talents(@NotNull Long talentId, @NotNull String firstName, @NotNull String surname, @NotNull String password,
+			@NotNull Long academicYear, @NotNull String programme, @NotNull String studentLevel, @NotNull String studentStatus,
+            @NotNull boolean jobShop, @NotNull Long recommendation) {
 		super();
 		this.talentId = talentId;
 		this.firstName = firstName;
@@ -100,11 +101,11 @@ public class Talents implements Serializable{
 		this.password = password;
 	}
 
-    public int getAcademicYear() {
+    public Long getAcademicYear() {
 		return academicYear;
 	}
 
-	public void setAcademicYear(Integer academicYear) {
+	public void setAcademicYear(Long academicYear) {
 		this.academicYear = academicYear;
 	}
 
@@ -140,11 +141,11 @@ public class Talents implements Serializable{
 		this.jobShop = jobShop;
 	}
 
-    public int getRecommendation() {
+    public Long getRecommendation() {
 		return recommendation;
 	}
 
-	public void setRecommendation(Integer recommendation) {
+	public void setRecommendation(Long recommendation) {
 		this.recommendation = recommendation;
 	}
 
